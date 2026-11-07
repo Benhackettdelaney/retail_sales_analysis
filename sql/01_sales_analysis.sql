@@ -27,3 +27,12 @@ FROM sales
 GROUP BY stock_code, description
 ORDER BY revenue DESC
 LIMIT 10;
+
+-- 4. How much revenue does the business generete per month?
+SELECT
+    year_month,
+    COUNT(DISTINCT invoice_no) AS total_orders,
+    ROUND(SUM(total_price), 2) AS monthly_revenue
+FROM sales
+GROUP BY year_month
+ORDER BY year_month ASC;
