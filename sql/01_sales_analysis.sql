@@ -17,3 +17,13 @@ FROM sales
 GROUP BY country
 ORDER BY total_revenue DESC;
 
+-- 3. Which top 10 products generate the most revenue?
+SELECT
+    stock_code,
+    description,
+    SUM(quantity) AS units_sold,
+    ROUND(SUM(total_price), 2) AS revenue
+FROM sales
+GROUP BY stock_code, description
+ORDER BY revenue DESC
+LIMIT 10;
